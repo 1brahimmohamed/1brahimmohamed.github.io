@@ -1,7 +1,7 @@
 # Uses of Const and & in C++
 
 
-# Contents
+# <em>Contents
 - [`Const` Uses](#const-uses)
     - [Declaration of Variables](#Declaration-of-Variables)
     - [Instead of `#define`](#instead-of-define)
@@ -9,8 +9,13 @@
     - [Member Functions](#in-member-functions)
     - [Function Return Type](#function-return-type)
   
-- [`&` Ueses]()  
 
+- [`&` Uses](#-uses)
+  - [Adress of Opertator](#address-of-operator)
+  - [Bitwise And](#bitwise-and)
+  - [Logical AND](#logical-and)
+<em>
+    
 ## `Const` Uses
 
 ### Declaration of Variables
@@ -49,29 +54,34 @@ i++;                // try to increment it <em>(will also give an error)</em>
   or call non-persistent member functions.
 
   <pre><code>class Date {
+  
   public:
-  Date( int mn, int dy, int yr );
-  int getMonth() const;     // A read-only function
-  void setMonth( int mn );   // A write function; can't be const
+  
+    Date( int mn, int dy, int yr );
+    int getMonth() const;                     // A read-only function
+    void setMonth(int mn);                  // A write function; can't be const
+  
+  
   private:
-  int month;
+  
+    int month;
   };
   
-  int Date::getMonth() const
-  {
-  return month;        // Doesn't modify anything
+  int Date::getMonth() const{
+    return month;                            // Doesn't modify anything
   }
-  void Date::setMonth( int mn )
-  {
-  month = mn;          // Modifies data member
+  
+  void Date::setMonth(int mn){
+    month = mn;                             // Modifies data member
   }
-  int main()
-  {
-  Date MyDate( 7, 4, 1998 );
-  const Date BirthDate( 1, 18, 1953 );
-  MyDate.setMonth( 4 );    // Okay
-  BirthDate.getMonth();    // Okay
-  BirthDate.setMonth( 4 ); // C2662 Error
+  
+  int main(){
+  
+    Date MyDate(7, 4, 1998);
+    const Date BirthDate(1, 18, 1953);
+    MyDate.setMonth(4);                   // Okay
+    BirthDate.getMonth();                 // Okay
+    BirthDate.setMonth(4);                // C2662 Error
   }
   </code></pre>
 
@@ -84,3 +94,47 @@ i++;                // try to increment it <em>(will also give an error)</em>
   </code></pre>
 
 ## `&` Uses
+
+### Address Of operator
+- Used to get the address of a variable
+  <pre>int myVar = 217;
+  int* myPtr = &myVar;
+  </pre>
+
+### Bitwise AND
+- The bitwise AND operator (&) compares each bit of the first operand to that bit of the second operand.
+  If both bits are 1, the bit is set to 1. Otherwise, the bit is set to 0. Both operands to the bitwise AND
+  operator must be of integral types.
+  
+  <pre><code>
+  int main() {  
+    unsigned short a = 0x5555;      // pattern 0101 ...  
+    unsigned short b = 0xAAAA;      // pattern 1010 ...
+    
+    cout << hex << ( a & b ) << endl;
+  }
+  </code></pre> 
+  #### Output 
+  <pre> 0 </pre>
+
+### Logical And
+- Used as a logic operator to make sure that two or more things happens togther
+
+<pre>int main(){
+    int myVar_1;
+    int myVar_2;
+
+    cin >> myVar_1 >> myVar_2;
+
+    if((myVar_1 > 0) && (myVar_2 > 0)){       // check if both are positive integers
+        cout << "Both are positive";          // both must be +ve to print this line
+    else
+        cout << "Try Again";
+
+    return 0;
+}</pre>
+
+
+
+
+
