@@ -3,7 +3,7 @@
 
 # Contents
 - [`Const` Uses](#const-uses)
-    - [Declaration of Variables](Declaration of Variables)
+    - [Declaration of Variables](#Declaration of Variables)
     - [Instead of `#define`](#instead-of-define)
     - [Pointers](#pointer)
     - [Member Functions](#in-member-functions)
